@@ -1,9 +1,19 @@
-import sys, os
+#
+# Simple feedforword nueral network to solve MNST dataset
+#
+import torch
+from torch import nn
 
-print("out")
+# global var for controling level of output
+PRINT_ALL = True
 
-input_path = os.path.join(os.path.dirname(__file__), 'input')
-print(input_path)
-title_text = "test=32"
-output = os.path.join(os.path.dirname(__file__), 'output', title_text) + '.png'
-print(output)
+# get devise
+devise = (
+    "cuda"
+    if torch.cuda.is_available()
+    else "mps"
+    if torch.backends.mps.is_available()
+    else "cpu"
+)
+if PRINT_ALL:
+    print(f"usinng devise: {devise}")
