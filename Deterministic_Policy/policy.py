@@ -2,7 +2,8 @@
 # Simple feedforword nueral network to solve MNST dataset
 #
 import torch
-from torch import nn
+import torch.nn as nn
+import torch.optim as optim
 
 # global var for controling level of output
 PRINT_ALL = True
@@ -42,3 +43,7 @@ class NeuralNetwork(nn.Module):
 model = NeuralNetwork().to(device)
 if PRINT_ALL:
     print(model)
+
+# functions for training the modle
+loss_fn = nn.BCELoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
