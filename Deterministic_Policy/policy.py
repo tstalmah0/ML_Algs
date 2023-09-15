@@ -47,3 +47,5 @@ if PRINT_ALL:
 # functions for training the modle
 loss_fn = nn.BCELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# load data for mnist dataset

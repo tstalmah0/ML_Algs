@@ -75,25 +75,33 @@ def save_images(images, title_texts):
             plt.title(title_text, fontsize = 15);        
         index += 1
 
-#
-# Load MINST dataset
-#
-mnist_dataloader = MnistDataloader(training_images_filepath, training_labels_filepath, test_images_filepath, test_labels_filepath)
-(x_train, y_train), (x_test, y_test) = mnist_dataloader.load_data()
+# funnction for testing data loading
+def test_load():
+    #
+    # Load MINST dataset
+    #
+    mnist_dataloader = MnistDataloader(training_images_filepath, training_labels_filepath, test_images_filepath, test_labels_filepath)
+    (x_train, y_train), (x_test, y_test) = mnist_dataloader.load_data()
 
-#
-# Save some random training and test images 
-#
-images_2_save = []
-titles_2_save = []
-for i in range(0, 2):
-    r = random.randint(1, 60000)
-    images_2_save.append(x_train[r])
-    titles_2_save.append('training_image_' + str(r) + '=' + str(y_train[r]))    
+    #
+    # Save some random training and test images 
+    #
+    images_2_save = []
+    titles_2_save = []
+    for i in range(0, 2):
+        r = random.randint(1, 60000)
+        images_2_save.append(x_train[r])
+        titles_2_save.append('training_image_' + str(r) + '=' + str(y_train[r]))    
 
-for i in range(0, 10):
-    r = random.randint(1, 10000)
-    images_2_save.append(x_test[r])        
-    titles_2_save.append('test_image_' + str(r) + '=' + str(y_test[r]))    
+    for i in range(0, 10):
+        r = random.randint(1, 10000)
+        images_2_save.append(x_test[r])        
+        titles_2_save.append('test_image_' + str(r) + '=' + str(y_test[r]))    
 
-save_images(images_2_save, titles_2_save)
+    save_images(images_2_save, titles_2_save)
+
+# function for getting training data
+def get_data():
+    mnist_dataloader = MnistDataloader(training_images_filepath, training_labels_filepath, test_images_filepath, test_labels_filepath)
+    (x_train, y_train), (x_test, y_test) = mnist_dataloader.load_data()
+    return (x_train, y_train), (x_test, y_test)
